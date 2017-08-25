@@ -11,6 +11,7 @@
     function ScrumboardController($scope, $http) {
 
         $scope.add = function (list, title) {
+
             var card = {
                 list: list.id,
                 title: title
@@ -23,7 +24,12 @@
                 // second function is only called in the case of an error
                 function(){
                     alert('Could not create card');
-                });
+                }
+            );
+        };
+
+        $scope.login = function () {
+            $http.post('/auth_api/login/', {username: 'craig', password: 'waffletoss'});
         };
 
         $scope.data = [];

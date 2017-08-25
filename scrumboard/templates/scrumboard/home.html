@@ -2,6 +2,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="{% static "scrumboard/scrumboard.js" %}"></script>
+<script src="{% static "scrumboard/scrumboard.config.js" %}"></script>
 <script src="{% static "scrumboard/card.directive.js" %}"></script>
 
 <html>
@@ -14,6 +15,9 @@
     {% verbatim %}
     <!-- using our controller in this div means we can access any data in the scope -->
     <div ng-controller="ScrumboardController">
+        <button ng-click="login()">Login</button>
+        <a href="/auth_api/logout">Logout</a><br>
+
         <!-- data refers to $scope.data -->
         <div class="list" ng-repeat="list in data">
             <h3>{{ list.name }}</h3>
