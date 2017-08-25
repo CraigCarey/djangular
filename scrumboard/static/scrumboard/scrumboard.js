@@ -12,16 +12,24 @@
 
         $scope.add = function (list, title) {
             var card = {
+                list: list.id,
                 title: title
             };
-
-            list.cards.push(card);
+            $http.post('/scrumboard/cards/', card)
+                // first function is called when promise returns successfully
+                .then(function(response){
+                    list.cards.push(response.data);
+                },
+                // second function is only called in the case of an error
+                function(){
+                    alert('Could not create card');
+                });
         };
 
         $scope.data = [];
 
         // get is asynchronous, it returns immediately a promise that we can call then on
-        $http.get('/scrumboard/lists').then(function(response){
+        $http.get('/scrumboard/lists/').then(function(response){
             $scope.data = response.data;
         });
     }
