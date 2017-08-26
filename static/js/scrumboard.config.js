@@ -5,7 +5,7 @@
         .config(['$routeProvider', config])
         .run(['$http', run]);
 
-    function config ($routeProvider) {
+    function config($routeProvider) {
 
         $routeProvider
             .when('/', {
@@ -19,9 +19,10 @@
             .otherwise('/');
     }
 
-    function run ($http) {
+
+    function run($http) {
         $http.defaults.xsrfHeaderName = 'X-CSRFToken';
         $http.defaults.xsrfCookieName = 'csrftoken';
-    }
-
+    };
 })();
+

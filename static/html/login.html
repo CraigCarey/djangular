@@ -1,10 +1,8 @@
 <form ng-submit="login()">
-
     <div style="color: red">{{ login_error }}</div>
-
     <div>
         <label>Username</label>
-        <input ng-model="user.username" />
+        <input type="text" ng-model="user.username"/>
     </div>
 
     <div>
@@ -13,6 +11,6 @@
     </div>
 
     <div>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
     </div>
 </form>
