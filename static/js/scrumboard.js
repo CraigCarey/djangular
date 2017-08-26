@@ -5,7 +5,7 @@
     'use strict';
 
     // create an angular module & controller
-    angular.module('scrumboard.demo', [])
+    angular.module('scrumboard.demo', ['ngRoute'])
         .controller('ScrumboardController', [ '$scope', '$http', ScrumboardController ]);
 
     function ScrumboardController($scope, $http) {
@@ -16,6 +16,7 @@
                 list: list.id,
                 title: title
             };
+
             $http.post('/scrumboard/cards/', card)
                 // first function is called when promise returns successfully
                 .then(function(response){
@@ -28,8 +29,11 @@
             );
         };
 
-        $scope.login = function () {
-            $http.post('/auth_api/login/', {username: 'craig', password: 'waffletoss'});
+        $scope.logout = function () {
+            $http.get('/auth_api/logout/')
+                .then(function () {
+                   $location.url('/login')
+                });
         };
 
         $scope.data = [];

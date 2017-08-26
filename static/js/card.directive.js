@@ -6,7 +6,7 @@
 
     function CardDirective() {
         return {
-            templateUrl: 'static/scrumboard/card.html', // where our template is being hosted
+            templateUrl: 'static/html/card.html', // where our template is being hosted
             restrict: 'E', // E for Element, meaning we can use this as an HTML element
             controller: ['$scope', '$http', function ($scope, $http) {
 
